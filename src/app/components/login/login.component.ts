@@ -6,32 +6,31 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
-  loggedIn!: boolean;
-  username: string | any;
+  loggedIn: boolean;
+  username!: string;
   password!: string;
 
-  constructor(private loginService: LoginService){
-    if(localStorage.getItem("portalAdminHasLoggedIn") == '' && localStorage.getItem("portalAdminHasLoggedIn") == null){
+	constructor (private loginService: LoginService) {
+    if(localStorage.getItem('PortalAdminHasLoggedIn') == '' || localStorage.getItem('PortalAdminHasLoggedIn') == null) {
       this.loggedIn = false;
-    }else {
+    } else {
       this.loggedIn = true;
     }
   }
-
-  ngOnInit(): void {
-  }
-
-  onSubmit(){
-    this.loginService.sendCredential(this.username,this.password).subscribe(
+  
+  onSubmit() {
+  	this.loginService.sendCredential(this.username, this.password).subscribe(
       res => {
-        this.loggedIn = true;
-        localStorage.setItem("portalAdminHasLoggedIn","true");
+        this.loggedIn=true;
+        localStorage.setItem('PortalAdminHasLoggedIn', 'true');
         location.reload();
       },
-      err => {console.log(err)}
-    )
+      err => console.log(err)
+    );
   }
+
+  ngOnInit() {}
 
 }
