@@ -18,7 +18,7 @@
         <li [style.display]="getDisplay()"><a routerLink="/appointment" routerLinkActive="active"> Appointment <span class="sr-only">(current)</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li [style.display]="getDisplay()"><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
+        <li *ngIf="!loggedIn" [style.display]="getDisplay()"><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

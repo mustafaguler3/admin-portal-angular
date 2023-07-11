@@ -9,11 +9,11 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class NavbarComponent {
 
-  loggedIn: boolean;
+  loggedIn: boolean = false;
 
   constructor(private loginService:LoginService,
               private router: Router){
-          if(localStorage.getItem("portalAdminHasLoggedIn") == ' '){
+          if(localStorage.getItem("portalAdminHasLoggedIn") == '' && localStorage.getItem("portalAdminHasLoggedIn") == null){
             this.loggedIn = false;
           }else {
             this.loggedIn = true;
