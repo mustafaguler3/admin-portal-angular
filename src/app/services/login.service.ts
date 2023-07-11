@@ -16,7 +16,7 @@ export class LoginService {
       "Content-Type:":"application/x-www-form-urlencoded"
     })
 
-    return this.httpClient.post(url,{headers:headers,username,withCredentials:true})
+    return this.httpClient.post(url,{headers:headers,username,withCredentials:true,params:params})
   }
 
   logout(){
